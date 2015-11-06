@@ -1,0 +1,609 @@
+/* ==========================================================================
+   normalize.css v3.0.2 | MIT License | git.io/normalize
+   *** Remove this if you have another CSS reset implemented already ***
+   ========================================================================== */
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    margin: 0
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block
+}
+
+audio, canvas, progress, video {
+    display: inline-block;
+    vertical-align: baseline
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0
+}
+
+[hidden], template {
+    display: none
+}
+
+a {
+    background-color: transparent
+}
+
+a:active, a:hover {
+    outline: 0
+}
+
+abbr[title] {
+    border-bottom: 1px dotted
+}
+
+b, strong {
+    font-weight: 700
+}
+
+dfn {
+    font-style: italic
+}
+
+h1 {
+    font-size: 2em;
+    margin: .67em 0
+}
+
+mark {
+    background: #ff0;
+    color: #000
+}
+
+small {
+    font-size: 80%
+}
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
+}
+
+sup {
+    top: -.5em
+}
+
+sub {
+    bottom: -.25em
+}
+
+img {
+    border: 0
+}
+
+svg:not(:root) {
+    overflow: hidden
+}
+
+figure {
+    margin: 1em 40px
+}
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0
+}
+
+pre {
+    overflow: auto
+}
+
+code, kbd, pre, samp {
+    font-family: monospace, monospace;
+    font-size: 1em
+}
+
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0
+}
+
+button {
+    overflow: visible
+}
+
+button, select {
+    text-transform: none
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer
+}
+
+button[disabled], html input[disabled] {
+    cursor: default
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;
+    padding: 0
+}
+
+input {
+    line-height: normal
+}
+
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    height: auto
+}
+
+input[type=search] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+
+fieldset {
+    border: 1px solid silver;
+    margin: 0 2px;
+    padding: .35em .625em .75em
+}
+
+legend {
+    border: 0;
+    padding: 0
+}
+
+textarea {
+    overflow: auto
+}
+
+optgroup {
+    font-weight: 700
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+td, th {
+    padding: 0
+}
+
+/* ==========================================================================
+   Styles for VoKS Alarm client web application
+   ========================================================================== */
+
+#audio {
+    display: none;
+}
+
+.app-window {
+    font: 1.2em/1.3 Roboto, Arial, sans-serif;
+}
+
+body {
+    background: #e5e5e5;
+    width: 273px;
+}
+
+body, body.chat {
+    height: 360px;
+}
+
+body.ask {
+    height: 90px;
+}
+
+body.alert {
+    height: 200px;
+}
+
+.but {
+    display: inline-block;
+    background: #666;
+    color: #e5e5e5;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    border: none;
+}
+
+.but.hover {
+    text-decoration: none;
+    color: #000;
+    background: #f9f100;
+}
+
+.but:active {
+    text-decoration: none;
+    background: #c7c7c7;
+}
+
+.page {
+    position: absolute;
+    /*  top: 12px;
+      right: 12px;*/
+    /*height: 25em;*/
+    height: 100%;
+    width: 100%;
+    display: none;
+    background: #e5e5e5;
+    /*  border-radius: 0.125em;
+      box-shadow: 0 0.125em 0.5em 0.25em rgba(0,0,0,0.1);*/
+}
+
+.close-window {
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5em;
+    color: #e5e5e5;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+}
+
+.notice {
+    position: absolute;
+    font-size: 1.3em;
+    padding: 0;
+    width: 100%;
+    /*  top: 18px;
+      right: 18px;*/
+    display: none;
+    z-index: 4;
+    background: #666;
+    color: #fff;
+    box-shadow: 0 0.125em 0.5em 0.25em rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 0;
+}
+
+.notice .close-window {
+    font-size: 0.75em;
+}
+
+.alarm-notice {
+    display: none;
+    position: absolute;
+    /*
+    top: 12px;
+    right: 12px;
+    */
+    background: #e5e5e5;
+    width: 100%;
+    /* width: 18em;*/
+    /*  border-radius: 0.125em;
+      box-shadow: 0 0.125em 0.5em 0.25em rgba(0,0,0,0.1);*/
+}
+
+.alarm-notice .speech-arrow,
+#chatwin .window-arrow {
+    bottom: auto;
+    top: -20px;
+    left: auto;
+    right: 102px;
+    border-color: transparent transparent #e5e5e5 transparent;
+    border-width: 10px;
+}
+
+.alarm-notice p {
+    padding: 1em;
+    margin: 0;
+    text-align: center;
+}
+
+.alarm-notice .but {
+    width: 50%;
+    padding: 1em 0;
+    display: block;
+    float: left;
+}
+
+.alarm-notice .confirm {
+    background: #cc2214;
+    color: #fff;
+}
+
+.alarm-notice .confirm:hover {
+    background: #f9f100;
+    color: #000;
+}
+
+.alarm-active {
+    display: none;
+    background: #cc2214;
+    color: #fff;
+    text-align: center;
+}
+
+.alarm-active .speech-arrow {
+    border-bottom-color: #cc2214;
+}
+
+.alarm-active h1 {
+    text-transform: uppercase;
+    padding: 1em 1em 0;
+    margin: 0;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.alarm-active .show-chat {
+    background: #e5e5e5;
+    display: block;
+    color: #666;
+    padding: 1em 0;
+    margin-top: 1em;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+
+.alarm-active .show-chat:hover {
+    background: #f9f100;
+    color: #000;
+}
+
+.alarm-active .show-chat img {
+    height: 1.5em;
+    width: auto;
+    vertical-align: middle;
+}
+
+.alarm-active .close-window {
+    color: #fff;
+}
+
+.alarm-active .close-window:hover {
+    color: #f9f100;
+}
+
+.alarm-active .call-the-police,
+#chatwin .call-the-police {
+    color: #000;
+    background: url(../images/call-police-stripes.png) repeat-x center bottom #fff;
+    padding: 1em 1em 1.25em 0.75em;
+    text-align: left;
+    border-radius: 0.25em;
+    float: none;
+    display: inline-block;
+    width: auto;
+}
+
+.alarm-active .call-the-police .tel-icon,
+#chatwin .call-the-police .tel-icon {
+    background: url(../images/tel-open-black.png) no-repeat left center transparent;
+    background-size: 100% auto;
+    width: 1em;
+    height: 1em;
+    display: block;
+    float: left;
+    margin-right: 0.25em;
+}
+
+.alarm-active .call-the-police:hover,
+#chatwin .call-the-police:hover {
+    background-color: #f9f100;
+}
+
+#chatwin .bar {
+    background: #e5e5e5;
+    height: 3.2em;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    z-index: 2;
+}
+
+#chatwin .top-bar {
+    top: 0;
+    box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.1);
+}
+
+#alarm-activated-window {
+    height: 100%;
+}
+
+#chatwin .bottom-bar {
+    bottom: 0;
+    box-shadow: 0 -0.25em 0.5em 0 rgba(0, 0, 0, 0.1);
+    text-align: right;
+    margin-bottom: -4px;
+}
+
+#chatwin .call-the-police {
+    border-radius: 0;
+    width: 50%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5em 0;
+    height: 3.5em;
+}
+
+#chatwin .call-the-police .tel-icon {
+    margin: 0 0.25em 0 0.6em;
+}
+
+#chatwin .chat {
+    position: absolute;
+    bottom: 55px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0 0 0;
+    top: 50px;
+    z-index: 1;
+    overflow-y: auto;
+}
+
+/*#chatwin .chat-window {*/
+/*position: absolute;*/
+/*bottom: 0;*/
+/*right: 0;*/
+/*left: 0;*/
+/*}*/
+#chatwin .chat-window p {
+    background: #fff;
+    padding: 0.75em;
+    color: black;
+    float: left;
+    display: block;
+    border-radius: 0.25em;
+    margin: 0 0.75em 0.75em;
+    clear: both;
+    position: relative;
+    word-wrap: break-word;
+    max-width: 86%;
+    /*  overflow-y:scroll;*/
+}
+
+#chatwin .chat-window .speech-arrow {
+    border-color: #fff transparent transparent transparent;
+}
+
+#chatwin .chat-window p em {
+    display: block;
+    color: #aaa;
+    font-style: normal;
+}
+
+#chatwin .chat-window p.me {
+    text-align: right;
+    float: right;
+}
+
+#chatwin .chat-window p.me .speech-arrow {
+    left: auto;
+    right: 1em;
+}
+
+#chatwin .chat-window p.system {
+    background: #666;
+    color: #fff;
+    float: none;
+    text-align: center;
+}
+
+#chatwin .call-crisis-team {
+    display: block;
+    float: left;
+    width: 3em;
+}
+
+#chatwin .call-crisis-team,
+#chatwin .chat-input,
+#chatwin .chat-submit {
+    display: inline-block;
+}
+
+#chatwin .call-crisis-team {
+    padding: 0;
+    background: url(../images/tel-open-white.png) no-repeat center center #9db212;
+    width: 3em;
+    height: 3em;
+    display: block;
+}
+
+#chatwin .call-crisis-team.close {
+    background-image: url(../images/tel-closed-white.png);
+    background-color: #cc2214;
+}
+
+#chatwin .call-crisis-team:hover {
+    background-image: url(../images/tel-open-black.png);
+    background-color: #f9f100;
+}
+
+#chatwin .call-crisis-team.close:hover {
+    background-image: url(../images/tel-closed-black.png);
+    background-color: #f9f100;
+}
+
+#chatwin .call-crisis-team.disabled, #chatwin .call-crisis-team.disabled:hover {
+    background-image: url(../images/tel-open-white.png);
+    background-color: #939393;
+}
+
+#chatwin .chat-input {
+    width: auto;
+    margin: 0.5em 0 0.5em 0;
+    height: 1em;
+    border: none;
+    padding: 0.5em;
+}
+
+#chatwin .chat-submit {
+    height: 3em;
+    float: right;
+    background: #e5e5e5;
+    color: #666;
+}
+
+#chatwin .close-window {
+    top: 0;
+    right: 0;
+    width: 50%;
+    z-index: 3;
+    background: #e5e5e5;
+    color: #666;
+    padding: 0.5em 0;
+    height: 67px;
+}
+
+#chatwin .chat-submit:hover,
+#chatwin .close-window:hover {
+    background: #f9f100;
+    color: #000;
+}
+
+.speech-arrow {
+    position: absolute;
+    display: block;
+    bottom: -10px;
+    left: 1em;
+    border: solid 5px lightgrey;
+    border-color: lightgrey white white white;
+    height: 0;
+    width: 0;
+    -webkit-transform: rotate(360deg);
+}
+
+.reset-plugin {
+    color: #fff;
+    text-decoration: none;
+}
+
+.drag {
+    /*-webkit-app-region: drag;*/
+}
+
+.no-drag {
+    /*-webkit-app-region: no-drag;*/
+}

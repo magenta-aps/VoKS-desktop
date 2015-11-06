@@ -1,0 +1,38 @@
+.system_color {
+    color: #7c7c7c !important;
+    background: #d5d5d5 !important;
+}
+
+.show-chat-button{
+    bottom: 125px;
+    height: 125px;
+    background: #e5e5e5;
+    display: block;
+    color: #666;
+    padding: 1em 0;
+    margin-top: 1em;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    position: absolute;
+}
+
+.hide-chat-button{
+    height: 125px;
+    background: #666;
+    color: #e5e5e5;
+    display: block;
+    padding: 1em 0;
+    margin-top: 1em;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+
+.hide-chat-button:hover, .show-chat-button:hover{
+    height: 125px;
+    background: #f9f100;
+    color: #000;
+}

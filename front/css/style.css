@@ -1,0 +1,719 @@
+/* ==========================================================================
+   normalize.css v3.0.2 | MIT License | git.io/normalize
+   *** Remove this if you have another CSS reset implemented already ***
+   ========================================================================== */
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block; }
+
+audio, canvas, progress, video {
+  display: inline-block;
+  vertical-align: baseline; }
+
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+[hidden], template {
+  display: none; }
+
+a {
+  background-color: transparent; }
+
+a:active, a:hover {
+  outline: 0; }
+
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+b, strong {
+  font-weight: 700; }
+
+dfn {
+  font-style: italic; }
+
+h1 {
+  font-size: 2em;
+  margin: .67em 0; }
+
+mark {
+  background: #ff0;
+  color: #000; }
+
+small {
+  font-size: 80%; }
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -.5em; }
+
+sub {
+  bottom: -.25em; }
+
+img {
+  border: 0; }
+
+svg:not(:root) {
+  overflow: hidden; }
+
+figure {
+  margin: 1em 40px; }
+
+hr {
+  box-sizing: content-box;
+  height: 0; }
+
+pre {
+  overflow: auto; }
+
+code, kbd, pre, samp {
+  font-family: monospace, monospace;
+  font-size: 1em; }
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0; }
+
+button {
+  overflow: visible; }
+
+button, select {
+  text-transform: none; }
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer; }
+
+button[disabled], html input[disabled] {
+  cursor: default; }
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+input {
+  line-height: normal; }
+
+input[type=checkbox], input[type=radio] {
+  box-sizing: border-box;
+  padding: 0; }
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  height: auto; }
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box; }
+
+input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+fieldset {
+  border: 1px solid silver;
+  margin: 0 2px;
+  padding: .35em .625em .75em; }
+
+legend {
+  border: 0;
+  padding: 0; }
+
+textarea {
+  overflow: auto; }
+
+optgroup {
+  font-weight: 700; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td, th {
+  padding: 0; }
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0; }
+
+.alarm-notice .speech-arrow, #chatwin .window-arrow {
+  bottom: auto;
+  top: -20px;
+  left: auto;
+  right: 102px;
+  border-color: transparent transparent #e5e5e5 transparent;
+  border-width: 10px; }
+
+#chatwin .call-the-police, .alarm-active .call-the-police {
+  color: #000;
+  background: url('../images/call-police-stripes.png') repeat-x center bottom #fff;
+  padding: 1em 1em 1.25em 0.75em;
+  text-align: center;
+  border-radius: 0.25em;
+  float: none;
+  display: inline-block;
+  width: auto;
+  background-size: auto 0.55em; }
+
+#chatwin .call-the-police .tel-icon, .alarm-active .call-the-police .tel-icon {
+  background: url('../images/tel-open-black.png') no-repeat left center transparent;
+  background-size: 100% auto;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  margin-right: 0.25em;
+  vertical-align: middle; }
+
+#chatwin .call-the-police[disabled], #chatwin .call-the-police[disabled]:hover, .alarm-active .call-the-police[disabled], .alarm-active .call-the-police[disabled]:hover {
+  background: url('../images/call-police-stripes.png') repeat-x center bottom #fff;
+  background-size: auto 0.55em;
+  opacity: 0.3; }
+
+html {
+  font-family: 1.2em/1.3 Roboto, Arial, sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+  html input[type=button] {
+    -webkit-appearance: button;
+    cursor: pointer; }
+  html input[disabled] {
+    cursor: default; }
+
+body {
+  margin: 0;
+  background: #e5e5e5;
+  width: 273px;
+  height: 360px; }
+  body.chat {
+    height: 360px; }
+  body.ask {
+    height: 90px; }
+  body.alert {
+    height: 200px; }
+
+article {
+  display: block; }
+
+aside {
+  display: block; }
+
+details {
+  display: block; }
+
+figcaption {
+  display: block; }
+
+figure {
+  display: block;
+  margin: 1em 40px; }
+
+footer {
+  display: block; }
+
+header {
+  display: block; }
+
+hgroup {
+  display: block; }
+
+main {
+  display: block; }
+
+menu {
+  display: block; }
+
+nav {
+  display: block; }
+
+section {
+  display: block; }
+
+summary {
+  display: block; }
+
+audio {
+  display: inline-block;
+  vertical-align: baseline; }
+  audio:not([controls]) {
+    display: none;
+    height: 0; }
+
+canvas {
+  display: inline-block;
+  vertical-align: baseline; }
+
+progress {
+  display: inline-block;
+  vertical-align: baseline; }
+
+video {
+  display: inline-block;
+  vertical-align: baseline; }
+
+[hidden] {
+  display: none; }
+
+template {
+  display: none; }
+
+a {
+  background-color: transparent; }
+  a:active {
+    outline: 0; }
+  a:hover {
+    outline: 0; }
+
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+b {
+  font-weight: 700; }
+
+strong {
+  font-weight: 700; }
+
+dfn {
+  font-style: italic; }
+
+h1 {
+  font-size: 2em;
+  margin: .67em 0; }
+
+mark {
+  background: #ff0;
+  color: #000; }
+
+small {
+  font-size: 80%; }
+
+sub {
+  bottom: -.25em; }
+
+sup {
+  top: -.5em; }
+
+img {
+  border: 0; }
+
+hr {
+  box-sizing: content-box;
+  height: 0; }
+
+pre {
+  overflow: auto;
+  font-family: 0.9em/0.9 Roboto, Arial, sans-serif, 0.9em/0.9 Roboto, Arial, sans-serif;
+  font-size: 1em; }
+
+code {
+  font-family: 0.9em/0.9 Roboto, Arial, sans-serif, 0.9em/0.9 Roboto, Arial, sans-serif;
+  font-size: 1em; }
+
+kbd {
+  font-family: 0.9em/0.9 Roboto, Arial, sans-serif, 0.9em/0.9 Roboto, Arial, sans-serif;
+  font-size: 1em; }
+
+samp {
+  font-family: 0.9em/0.9 Roboto, Arial, sans-serif, 0.9em/0.9 Roboto, Arial, sans-serif;
+  font-size: 1em; }
+
+button {
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+  cursor: pointer;
+  outline: none; }
+
+input {
+  line-height: normal; }
+
+optgroup {
+  font-weight: 700; }
+
+select {
+  text-transform: none; }
+
+textarea {
+  overflow: auto; }
+
+input[type=reset] {
+  -webkit-appearance: button;
+  cursor: pointer; }
+
+input[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer; }
+
+button[disabled] {
+  cursor: default; }
+
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+input[type=checkbox] {
+  box-sizing: border-box;
+  padding: 0; }
+
+input[type=radio] {
+  box-sizing: border-box;
+  padding: 0; }
+
+input[type=number]::-webkit-inner-spin-button {
+  height: auto; }
+
+input[type=number]::-webkit-outer-spin-button {
+  height: auto; }
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box; }
+
+input[type=search]::-webkit-search-cancel-button {
+  -webkit-appearance: none; }
+
+input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: .35em .625em .75em; }
+
+legend {
+  border: 0;
+  padding: 0; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td {
+  padding: 0; }
+
+th {
+  padding: 0; }
+
+#audio {
+  display: none; }
+
+.app-window .alarm-notice {
+  font: 1.2em/1.3 Roboto, Arial, sans-serif; }
+.app-window .page {
+  font: 0.9em/0.9 Roboto, Arial, sans-serif; }
+
+.but {
+  display: inline-block;
+  background: #666;
+  color: #e5e5e5;
+  padding: 0.5em 1em;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  border: none; }
+  .but.hover {
+    text-decoration: none;
+    color: #000; }
+  .but:active {
+    text-decoration: none;
+    background: #c7c7c7; }
+
+.page {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: none;
+  background: #e5e5e5; }
+
+.close-window {
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5em;
+  color: #e5e5e5;
+  cursor: pointer;
+  border: none;
+  background: transparent; }
+
+.notice {
+  position: absolute;
+  font-size: 1.3em;
+  padding: 0;
+  width: 100%;
+  display: none;
+  z-index: 4;
+  background: #666;
+  color: #fff;
+  box-shadow: 0 0.1em 0.4em 0 rgba(0, 0, 0, 0.5);
+  text-align: center;
+  border-radius: 0; }
+  .notice .close-window {
+    font-size: 0.75em; }
+
+.alarm-notice {
+  display: none;
+  position: absolute;
+  background: #e5e5e5;
+  width: 100%; }
+  .alarm-notice p {
+    padding: 1em;
+    margin: 0;
+    text-align: center; }
+  .alarm-notice .but {
+    width: 50%;
+    padding: 1em 0;
+    display: block;
+    float: none;
+    margin: auto; }
+  .alarm-notice .confirm {
+    background: #cc2214;
+    color: #fff; }
+    .alarm-notice .confirm:hover {
+      background: #f9f100;
+      color: #000; }
+
+.confirm-alarm.alarm-notice .but {
+  float: left; }
+
+#chatwin .call-the-police {
+  border-radius: 0;
+  width: 50%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5em 0;
+  height: 3em; }
+  #chatwin .call-the-police:hover {
+    background-color: #f9f100; }
+#chatwin .bar {
+  background: #e5e5e5;
+  height: 3em;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  z-index: 2; }
+#chatwin .top-bar {
+  top: 0;
+  box-shadow: 0 0.1em 0.4em 0 rgba(0, 0, 0, 0.5);
+  border-top: 1px solid #e5e5e5; }
+#chatwin .bottom-bar {
+  bottom: 0;
+  box-shadow: 0 -0.1em 0.4em 0 rgba(0, 0, 0, 0.5);
+  text-align: right;
+  margin-bottom: -4px; }
+#chatwin .chat {
+  position: absolute;
+  top: 3em;
+  bottom: 3em;
+  left: 0;
+  width: 100%;
+  padding: 0.75em 0 0 0;
+  overflow-y: auto;
+  z-index: 1; }
+#chatwin .chat-window {
+  width: 100%;
+  box-sizing: border-box; }
+  #chatwin .chat-window p {
+    float: none;
+    background: #fff;
+    color: #000;
+    display: block;
+    margin: 0 0 1em;
+    clear: both;
+    position: relative;
+    line-height: 1.2em;
+    padding: 0.6em 1em; }
+    #chatwin .chat-window p.ct, #chatwin .chat-window p.me {
+      font: 0.9em/1.5 Roboto, Arial, sans-serif;
+      max-width: 80%;
+      word-break: break-word; }
+    #chatwin .chat-window p.ct {
+      float: left;
+      text-align: left;
+      border-bottom-right-radius: 0.25em;
+      border-top-right-radius: 0.25em; }
+      #chatwin .chat-window p.ct .speech-arrow {
+        border-color: #fff transparent transparent #fff; }
+    #chatwin .chat-window p.me {
+      max-width: 80%;
+      text-align: right;
+      float: right;
+      border-bottom-left-radius: 0.25em;
+      border-top-left-radius: 0.25em; }
+      #chatwin .chat-window p.me .speech-arrow {
+        left: auto;
+        right: 1em;
+        border-color: #fff #fff transparent transparent; }
+    #chatwin .chat-window p.system {
+      background: #666;
+      text-align: center;
+      cursor: pointer;
+      margin-left: 1em;
+      margin-right: 1em;
+      border-radius: 0.25em;
+      font: 0.9em/0.9 Roboto, Arial, sans-serif;
+      word-break: break-all;
+      line-height: 16px; }
+      #chatwin .chat-window p.system, #chatwin .chat-window p.system span {
+        color: #fff; }
+      #chatwin .chat-window p.system span {
+        font: 1em/0.9 Roboto, Arial, sans-serif;
+        display: block; }
+      #chatwin .chat-window p.system .system__button {
+        background: #666;
+        border: 1px solid #fff;
+        border-radius: 8px;
+        padding: 15px;
+        color: #fff;
+        text-transform: uppercase;
+        margin-top: 10px; }
+        #chatwin .chat-window p.system .system__button:hover {
+          background: #333; }
+    #chatwin .chat-window p em {
+      display: block;
+      color: #aaa;
+      font-style: normal; }
+  #chatwin .chat-window .speech-arrow {
+    border-color: #fff transparent transparent transparent; }
+#chatwin .call-crisis-team {
+  float: left;
+  padding: 0;
+  background: url('../images/tel-open-white.png') no-repeat center center #9db212;
+  width: 3em;
+  height: 3em;
+  display: inline-block; }
+  #chatwin .call-crisis-team.close {
+    background-image: url('../images/tel-closed-white.png');
+    background-color: #cc2214; }
+    #chatwin .call-crisis-team.close:hover {
+      background-image: url('../images/tel-closed-black.png');
+      background-color: #f9f100; }
+  #chatwin .call-crisis-team:hover {
+    background-image: url('../images/tel-open-black.png');
+    background-color: #f9f100; }
+  #chatwin .call-crisis-team.disabled {
+    background-image: url('../images/tel-open-white.png');
+    background-color: #939393; }
+    #chatwin .call-crisis-team.disabled:hover {
+      background-image: url('../images/tel-open-white.png');
+      background-color: #939393; }
+#chatwin .chat-input {
+  display: inline-block;
+  width: auto;
+  margin: 0.4em 0.5em;
+  height: 2em;
+  border: none;
+  padding: 0.5em;
+  box-sizing: border-box;
+  width: calc((100% - 3em * 3) - (0.5em * 2)); }
+#chatwin .chat-submit {
+  display: inline-block;
+  width: 6em;
+  height: 3em;
+  float: right;
+  background: #e5e5e5;
+  color: #666; }
+  #chatwin .chat-submit:hover {
+    background: #f9f100;
+    color: #000; }
+#chatwin .close-window {
+  top: 0;
+  right: 0;
+  width: 50%;
+  z-index: 3;
+  background: #e5e5e5;
+  color: #666;
+  padding: 0.5em 0;
+  height: 3em; }
+  #chatwin .close-window:hover {
+    background: #f9f100;
+    color: #000; }
+
+.alarm-active {
+  display: none;
+  background: #cc2214;
+  color: #fff;
+  text-align: center; }
+  .alarm-active .speech-arrow {
+    border-bottom-color: #cc2214; }
+  .alarm-active h1 {
+    text-transform: uppercase;
+    padding: 1em 1em 0;
+    margin: 0;
+    font-size: 1.3em;
+    text-align: center; }
+  .alarm-active .show-chat {
+    background: #e5e5e5;
+    display: block;
+    color: #666;
+    padding: 1em 0;
+    margin-top: 1em;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    bottom: 0;
+    position: absolute; }
+    .alarm-active .show-chat:hover {
+      background: #f9f100;
+      color: #000; }
+    .alarm-active .show-chat img {
+      height: 1.5em;
+      width: auto;
+      vertical-align: middle;
+      margin-right: 0.3em; }
+  .alarm-active .close-window {
+    color: #fff; }
+    .alarm-active .close-window:hover {
+      color: #f9f100; }
+  .alarm-active .call-the-police:hover {
+    background-color: #f9f100; }
+
+#alarm-activated-window {
+  height: 100%; }
+
+.speech-arrow {
+  position: absolute;
+  display: block;
+  bottom: -8px;
+  left: 1em;
+  border: solid 4px #d3d3d3;
+  border-color: #d3d3d3 #fff #fff #fff;
+  height: 0;
+  width: 0;
+  -webkit-transform: rotate(360deg); }
+
+.reset-plugin {
+  color: #fff;
+  text-decoration: none; }
+
+svg:not(:root) {
+  overflow: hidden; }
+
+#chat-form > * {
+  display: block !important;
+  float: left !important; }

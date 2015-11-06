@@ -1,0 +1,853 @@
+//colors
+$yellow: #ff0;
+$black: #000;
+$Gray90: #e5e5e5;
+$Gray40: #666;
+$silver: #c0c0c0;
+$color_turbo_approx: #f9f100;
+$color_pumice_approx: #c7c7c7;
+$white: #fff;
+$color_thunderbird_approx: #cc2214;
+$color_silver_chalice_approx: #aaa;
+$color_citron_approx: #9db212;
+$color_mountain_mist_approx: #939393;
+$color_quill_gray_approx: #d3d3d3;
+$buttonHeight: 3em;
+$inputChatMarginSide: 0.5em;
+$inputHeight: $buttonHeight - 1;
+$shadowBottom: 0 0.1em 0.4em 0 rgba(0, 0, 0, 0.5);
+$shadowTop: 0 -0.1em 0.4em 0 rgba(0, 0, 0, 0.5);
+$wCallButtonSize: $buttonHeight;
+$chatRadius: 0.25em;
+$hBottomPart: 8em;
+$disabledOpacity: 0.3;
+
+$ffPrimary: 1.2em/1.3 Roboto, Arial, sans-serif;
+$ffSecondary: 0.9em/0.9 Roboto, Arial, sans-serif;
+$ffChat: 0.9em/1.5 Roboto, Arial, sans-serif;
+
+//fonts
+$font_0: $ffPrimary;
+$font_1: $ffSecondary;
+$font_2: $ffSecondary;
+
+//urls
+$url_0: url('../images/call-police-stripes.png');
+$url_1: url('../images/tel-open-black.png');
+$url_2: url('../images/tel-open-white.png');
+$url_3: url('../images/tel-closed-white.png');
+$url_4: url('../images/tel-closed-black.png');
+
+//@extend-elements
+//original selectors
+//sub, sup
+%extend_1 {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+//original selectors
+//button, input, optgroup, select, textarea
+%extend_2 {
+    color: inherit; 
+    font: inherit;
+    margin: 0;
+}
+
+//original selectors
+//.alarm-notice .speech-arrow, #chatwin .window-arrow
+%extend_3 {
+    bottom: auto;
+    top: -20px;
+    left: auto;
+    right: 102px;
+    border-color: transparent transparent $Gray90 transparent;
+    border-width: 10px;
+}
+
+//original selectors
+//.alarm-active .call-the-police, #chatwin .call-the-police
+%extend_4 {
+    color: $black;
+    background: $url_0 repeat-x center bottom $white;
+    padding: 1em 1em 1.25em 0.75em;
+    text-align: center;
+    //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+    border-radius: 0.25em;
+    float: none;
+    display: inline-block;
+    width: auto;
+    background-size: auto 0.55em;
+}
+
+//original selectors
+//.alarm-active .call-the-police .tel-icon, #chatwin .call-the-police .tel-icon
+%extend_5 {
+    background: $url_1 no-repeat left center transparent;
+    background-size: 100% auto;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    margin-right: 0.25em;
+    vertical-align: middle;
+}
+
+//original selectors
+//.alarm-active .call-the-police disabled, #chatwin .call-the-police .disabled
+%extend_6 {
+    background: $url_0 repeat-x center bottom $white;
+    background-size: auto 0.55em;
+    opacity: $disabledOpacity;
+}
+
+
+html {
+    font-family: $font_0;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    input[type=button] {
+        -webkit-appearance: button;
+        cursor: pointer;
+    }
+    input[disabled] {
+        cursor: default;
+    }
+}
+body {
+    margin: 0;
+    background: $Gray90;
+    width: 273px;
+    height: 360px;
+    
+    &.chat {
+        height: 360px;
+    }
+    
+    &.ask {
+        height: 90px;
+    }
+    
+    &.alert {
+        height: 200px;
+    }
+}
+
+article {
+    display: block;
+}
+
+aside {
+    display: block;
+}
+
+details {
+    display: block;
+}
+
+figcaption {
+    display: block;
+}
+
+figure {
+    display: block;
+    margin: 1em 40px;
+}
+
+footer {
+    display: block;
+}
+
+header {
+    display: block;
+}
+
+hgroup {
+    display: block;
+}
+
+main {
+    display: block;
+}
+
+menu {
+    display: block;
+}
+
+nav {
+    display: block;
+}
+
+section {
+    display: block;
+}
+
+summary {
+    display: block;
+}
+
+audio {
+    display: inline-block;
+    vertical-align: baseline;
+    
+    &:not([controls]) {
+        display: none;
+        height: 0;
+    }
+}
+
+canvas {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+progress {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+video {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+[hidden] {
+    display: none;
+}
+
+template {
+    display: none;
+}
+
+a {
+    background-color: transparent;
+    
+    &:active {
+        outline: 0;
+    }
+    
+    &:hover {
+        outline: 0;
+    }
+}
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+b {
+    font-weight: 700;
+}
+
+strong {
+    font-weight: 700;
+}
+
+dfn {
+    font-style: italic;
+}
+
+h1 {
+    font-size: 2em;
+    margin: .67em 0;
+}
+
+mark {
+    background: $yellow;
+    color: $black;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub {
+    @extend %extend_1;
+    bottom: -.25em;
+}
+
+sup {
+    @extend %extend_1;
+    top: -.5em;
+}
+
+img {
+    border: 0;
+}
+
+hr {
+    -moz-box-sizing: content-box;
+    //Instead of the line below you could use @includebox-sizing($bs)
+    box-sizing: content-box;
+    height: 0;
+}
+
+pre {
+    overflow: auto;
+    font-family: $font_1, $font_2;
+    font-size: 1em;
+}
+
+code {
+    font-family: $font_1, $font_2;
+    font-size: 1em;
+}
+
+kbd {
+    font-family: $font_1, $font_2;
+    font-size: 1em;
+}
+
+samp {
+    font-family: $font_1, $font_2;
+    font-size: 1em;
+}
+
+button {
+    @extend %extend_2;
+    overflow: visible;
+    text-transform: none;
+    -webkit-appearance: button;
+    cursor: pointer;
+    outline: none;
+}
+
+input {
+    @extend %extend_2;
+    line-height: normal;
+}
+
+optgroup {
+    @extend %extend_2;
+    font-weight: 700;
+}
+
+select {
+    @extend %extend_2;
+    text-transform: none;
+}
+
+textarea {
+    @extend %extend_2;
+    overflow: auto;
+}
+
+input[type=reset] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+button[disabled] {
+    cursor: default;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+input[type=checkbox] {
+    //Instead of the line below you could use @includebox-sizing($bs)
+    box-sizing: border-box;
+    padding: 0;
+}
+
+input[type=radio] {
+    //Instead of the line below you could use @includebox-sizing($bs)
+    box-sizing: border-box;
+    padding: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    height: auto;
+}
+
+input[type=number]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+input[type=search] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    //Instead of the line below you could use @includebox-sizing($bs)
+    box-sizing: content-box;
+}
+
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+input[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+fieldset {
+    border: 1px solid $silver;
+    margin: 0 2px;
+    padding: .35em .625em .75em;
+}
+
+legend {
+    border: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td {
+    padding: 0;
+}
+
+th {
+    padding: 0;
+}
+
+#audio {
+    display: none;
+}
+
+.app-window {
+    .alarm-notice {
+        font: $ffPrimary;
+    }
+    
+    .page {
+        font: $ffSecondary;
+    }
+}
+
+.but {
+    display: inline-block;
+    background: $Gray40;
+    color: $Gray90;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    
+    &.hover {
+        text-decoration: none;
+        color: $black;
+    }
+    
+    &:active {
+        text-decoration: none;
+        background: $color_pumice_approx;
+    }
+}
+
+.page {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: none;
+    background: $Gray90;
+}
+
+.close-window {
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5em;
+    color: $Gray90;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+}
+
+.notice {
+    position: absolute;
+    font-size: 1.3em;
+    padding: 0;
+    width: 100%;
+    display: none;
+    z-index: 4;
+    background: $Gray40;
+    color: $white;
+    //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: $shadowBottom;
+    text-align: center;
+    //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+    border-radius: 0;
+    
+    .close-window {
+        font-size: 0.75em;
+    }
+}
+
+.alarm-notice {
+    display: none;
+    position: absolute;
+    background: $Gray90;
+    width: 100%;
+    
+    .speech-arrow {
+        @extend %extend_3;
+    }
+    
+    p {
+        padding: 1em;
+        margin: 0;
+        text-align: center;
+    }
+    
+    .but {
+        width: 50%;
+        padding: 1em 0;
+        display: block;
+        float: none;
+        margin: auto;
+    }
+    
+    .confirm {
+        background: $color_thunderbird_approx;
+        color: $white;
+        
+        &:hover {
+            background: $color_turbo_approx;
+            color: $black;
+        }
+    }
+}
+
+.confirm-alarm {
+    &.alarm-notice {
+        .but {
+            float: left;
+        }
+    }
+}
+
+#chatwin {
+    .window-arrow {
+        @extend %extend_3;
+    }
+    
+    .call-the-police {
+        @extend %extend_4;
+        //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+        border-radius: 0;
+        width: 50%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0.5em 0;
+        height: $buttonHeight;
+         
+        .tel-icon {
+            @extend %extend_5;
+        }
+        
+        &:hover {
+            background-color: $color_turbo_approx;
+        }
+    
+        &[disabled],
+        &:hover[disabled] {
+            @extend %extend_6;
+        }
+    }
+    
+    .bar {
+        background: $Gray90;
+        height: $buttonHeight;
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        z-index: 2;
+    }
+    
+    .top-bar {
+        top: 0;
+        //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: $shadowBottom;
+        border-top: 1px solid $Gray90;
+    }
+    
+    .bottom-bar {
+        bottom: 0;
+        //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: $shadowTop;
+        text-align: right;
+        margin-bottom: -4px;
+    }
+    
+    .chat {
+        position: absolute;
+        top: $buttonHeight;
+        bottom: $buttonHeight;
+        left: 0;
+        width: 100%;
+        padding: 0.75em 0 0 0;
+        overflow-y: auto;
+        z-index: 1;
+    }
+    
+    .chat-window {
+        width: 100%;
+        box-sizing: border-box;
+        
+        p {
+            float: none;
+            background: $white;
+            color: $black;
+            display: block;
+            margin: 0 0 1em;
+            clear: both;
+            position: relative;
+            line-height: 1.2em;
+            padding: 0.6em 1em;
+            
+            &.ct,
+            &.me {
+                font: $ffChat;
+                max-width: 80%;
+                word-break: break-word;
+            }
+            
+            &.ct {
+                float: left;
+                text-align: left;
+                @include border-right-radius($chatRadius);
+                
+                .speech-arrow {
+                    border-color: $white transparent transparent $white;
+                }
+            }
+            
+            &.me {
+                max-width: 80%;
+                text-align: right;
+                float: right;
+                @include border-left-radius($chatRadius);
+                
+                .speech-arrow {
+                    left: auto;
+                    right: 1em;
+                    border-color: $white $white transparent transparent;
+                }
+            }
+            
+            &.system { 
+                background: $Gray40;
+                color: $white;
+                text-align: center;
+                cursor: pointer;
+                margin-left: 1em;
+                margin-right: 1em;
+                border-radius: $chatRadius;
+                font: $ffSecondary;
+            }
+            
+            em {
+                display: block;
+                color: $color_silver_chalice_approx;
+                font-style: normal;
+            }
+        }
+        
+        .speech-arrow {
+            border-color: $white transparent transparent transparent;
+        }
+    }
+    
+    .call-crisis-team {
+        float: left;
+        padding: 0;
+        background: $url_2 no-repeat center center $color_citron_approx;
+        width: $wCallButtonSize;
+        height: $wCallButtonSize;
+        display: inline-block;
+        
+        &.close {
+            background-image: $url_3;
+            background-color: $color_thunderbird_approx;
+            
+            &:hover {
+                background-image: $url_4;
+                background-color: $color_turbo_approx;
+            }
+        }
+        
+        &:hover {
+            background-image: $url_1;
+            background-color: $color_turbo_approx;
+        }
+        
+        &.disabled {
+            background-image: $url_2;
+            background-color: $color_mountain_mist_approx;
+            
+            &:hover {
+                background-image: $url_2;
+                background-color: $color_mountain_mist_approx;
+            }
+        }
+    }
+    
+    .chat-input {
+        display: inline-block;
+        width: auto;
+        margin: 0.4em $inputChatMarginSide;
+        height: $inputHeight;
+        border: none;
+        padding: 0.5em;
+        box-sizing: border-box;
+        @include calc(width, "(100% - #{$wCallButtonSize} * 3) - (#{$inputChatMarginSide} * 2)");
+    }
+    
+    .chat-submit {
+        display: inline-block;
+        width: $wCallButtonSize * 2;
+        height: $wCallButtonSize;
+        float: right;
+        background: $Gray90;
+        color: $Gray40;
+        
+        &:hover {
+            background: $color_turbo_approx;
+            color: $black;
+        }
+    }
+    
+    .close-window {
+        top: 0;
+        right: 0;
+        width: 50%;
+        z-index: 3;
+        background: $Gray90;
+        color: $Gray40;
+        padding: 0.5em 0;
+        height: $buttonHeight;
+        
+        &:hover {
+            background: $color_turbo_approx;
+            color: $black;
+        }
+    }
+}
+
+.alarm-active {
+    display: none;
+    background: $color_thunderbird_approx;
+    color: $white;
+    text-align: center;
+    
+    .speech-arrow {
+        border-bottom-color: $color_thunderbird_approx;
+    }
+    
+    h1 {
+        text-transform: uppercase;
+        padding: 1em 1em 0;
+        margin: 0;
+        font-size: 1.3em;
+        text-align: center;
+    }
+    
+    .show-chat {
+        background: $Gray90;
+        display: block;
+        color: $Gray40;
+        padding: 1em 0;
+        margin-top: 1em;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+        bottom: 0;
+        position: absolute;
+        
+        &:hover {
+            background: $color_turbo_approx;
+            color: $black;
+        }
+        
+        img {
+            height: 1.5em;
+            width: auto;
+            vertical-align: middle;
+            margin-right: 0.3em;
+        }
+    }
+    
+    .close-window {
+        color: $white;
+        
+        &:hover {
+            color: $color_turbo_approx;
+        }
+    }
+    
+    .call-the-police {
+        @extend %extend_4;
+        
+        .tel-icon {
+            @extend %extend_5;
+        }
+        
+        &:hover {
+            background-color: $color_turbo_approx;
+        }
+    
+        &[disabled],
+        &:hover[disabled] {
+            @extend %extend_6;
+        }
+    }
+}
+
+#alarm-activated-window {
+    height: 100%;
+}
+
+.speech-arrow {
+    position: absolute;
+    display: block;
+    bottom: -8px;
+    left: 1em;
+    border: solid 4px $color_quill_gray_approx;
+    border-color: $color_quill_gray_approx $white $white $white;
+    height: 0;
+    width: 0;
+    -webkit-transform: rotate(360deg);
+}
+
+.reset-plugin {
+    color: $white;
+    text-decoration: none;
+}
+
+.drag {
+}
+
+.no-drag {
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+#chat-form > * {
+    display: block !important;
+    float: left !important;
+}
