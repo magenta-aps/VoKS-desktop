@@ -10,6 +10,9 @@ SET RH_EXE="C:\Program Files (x86)\Resource Hacker\ResourceHacker.exe"
 :: Path to Inno Setup Builder exe file
 SET INNO_EXE="C:\Program Files (x86)\Inno Setup 5\ISCC.exe"
 
+:: Path to 7zip program
+SET ZIP_EXE="C:\Program Files\7-Zip\7z.exe"
+
 
 echo ================== CLEANING DIRECTORY AND CREATING FOLDERS ==================
 cd %BUILDER_LOC%
@@ -38,7 +41,7 @@ COPY /Y %BUILDER_LOC%config\config-en.js %SOURCE_LOCATION%\front\js\config.js
 
 :: build the node application
 cd %BUILD_OUTPUT%\en
-CALL nwbuild -p win32,win64 %SOURCE_LOCATION% -v --v 0.12.3
+CALL nwbuild -p win32,win64,osx64,osx32 %SOURCE_LOCATION% -v --v 0.12.3
 
 :: This command will replace the icons for windows applications
 cd %BUILD_OUTPUT%\en\build\alarm\win64\
@@ -55,7 +58,7 @@ COPY /Y %BUILDER_LOC%config\config-no.js %SOURCE_LOCATION%\front\js\config.js
 
 :: build the node application
 cd %BUILD_OUTPUT%\no
-CALL nwbuild -p win32,win64 %SOURCE_LOCATION% -v --v 0.12.3
+CALL nwbuild -p win32,win64,osx64,osx32 %SOURCE_LOCATION% -v --v 0.12.3
 
 :: This command will replace the icons for windows applications
 cd %BUILD_OUTPUT%\no\build\alarm\win64\
@@ -77,9 +80,34 @@ CALL %INNO_EXE% /Qp "64setup_no.iss"
 
 echo ================== CLEANING UP FOLDERS ==================
 
+:: Create output directory for osx
+cd %BUILD_OUTPUT%
+MKDIR output
+cd %BUILD_OUTPUT%\output
+MKDIR en
+MKDIR no
+
+:: Remove windows builds
+cd %BUILD_OUTPUT%\en\build\alarm
+RD /Q /S win32
+RD /Q /S win64
+
+:: Move folders to match the expected folder structure for osx build phase
 cd %BUILD_OUTPUT%\en
-
+MOVE /Y %BUILD_OUTPUT%\en\build\alarm %BUILD_OUTPUT%\output\en\alarm
 RD /Q /S build
 
+:: Remove windows builds
+cd %BUILD_OUTPUT%\no\build\alarm
+RD /Q /S win32
+RD /Q /S win64
+
+:: Move folders to match the expected folder structure for osx build phase
 cd %BUILD_OUTPUT%\no
+MOVE /Y %BUILD_OUTPUT%\no\build\alarm %BUILD_OUTPUT%\output\no\alarm
 RD /Q /S build
+
+:: Zip output for osx, and remove the folder
+cd %BUILD_OUTPUT%
+CALL %ZIP_EXE% a output.zip output
+RD /Q /S output

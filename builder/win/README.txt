@@ -13,16 +13,20 @@
 3. Node must be installed
    DOWNLOAD LINK: https://nodejs.org/en/download/
 
-4. Node webkit builder must be installed via command line: npm install nw-builder -g
+4. 7Zip must be installed and the location specified in the builder.bat:
+   SET ZIP_EXE="C:\Program Files\7-Zip\7z.exe"
+   DOWNLOAD LINK: http://www.7-zip.org/download.html
 
-5. "npm install" should be executed via command line to install application dependencies.
+5. Node webkit builder must be installed via command line: npm install nw-builder -g
 
-6. Change config/config-en.js and config/config-no.js domain value.
+6. "npm install" should be executed via command line to install application dependencies.
+
+7. Change config/config-en.js and config/config-no.js domain value.
    
-7. Generate AppId and change it in scripts/*.iss files (To generate a new GUID, in Inno setup, click Tools | Generate GUID inside the IDE.)
+8. Generate AppId and change it in scripts/*.iss files (To generate a new GUID, in Inno setup, click Tools | Generate GUID inside the IDE.)
 
 =================================================================================================================
 	HOW TO USE
 =================================================================================================================
 1. Run it by clicking the bat file or opening it from the cmd
-2. After script finishes executing "output" directory will contain windows installers
+2. After script finishes executing "output" directory will contain windows installers, and output.zip which will be required to build the osx installers.

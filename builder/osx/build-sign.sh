@@ -3,17 +3,12 @@
 # where the script lays
 BASEDIR=$(dirname $0)
 
-# install builder dependencies
-npm install
 
 # go into sources dir
 cd $BASEDIR;
 BASEDIR=${PWD}
 
 cd ../../source
-
-# install app dependencies
-npm install
 
 
 SOURCE_DIR=${PWD}
@@ -46,17 +41,11 @@ function sign_app(){
 	spctl -a -vvvv $1;
 }
 
-# First parameter configuration file to copy, second parameter output directory
-function build_application(){
-    # replace configuration file
-    cp -f "$1" "${SOURCE_DIR}/front/js/config.js"
-
-    # build application
-    ${BASEDIR}/node_modules/nw-builder/bin/nwbuild -p osx64,osx32 -o $2 $SOURCE_DIR -v --v 0.12.3
-
+# First parameter output directory
+function replace_icons(){
     # replace icons
-    cp -f "${BASEDIR}/files/nw.icns" "${2}/alarm/osx32/alarm.app/Contents/Resources/nw.icns"
-    cp -f "${BASEDIR}/files/nw.icns" "${2}/alarm/osx64/alarm.app/Contents/Resources/nw.icns"
+    cp -f "${BASEDIR}/files/nw.icns" "${1}/alarm/osx32/alarm.app/Contents/Resources/nw.icns"
+    cp -f "${BASEDIR}/files/nw.icns" "${1}/alarm/osx64/alarm.app/Contents/Resources/nw.icns"
 }
 
 # First parameter package location, second parameter - signed package output location
@@ -78,11 +67,11 @@ function build_installer (){
 cd $BASEDIR
 
 rm -rf ${BASEDIR}/output
-mkdir ${BASEDIR}/output
+ditto -x -k ${BASEDIR}/output.zip ${BASEDIR};
 
-# Build the app
-build_application ${BASEDIR}/config/config-en.js ${BASEDIR}/output/en
-build_application ${BASEDIR}/config/config-no.js ${BASEDIR}/output/no
+# Replace app icons
+replace_icons ${BASEDIR}/output/en
+replace_icons ${BASEDIR}/output/no
 
 # Sign applications, build installers, and sign installers
 build_installer ${BASEDIR}/output/en/alarm/osx64/alarm.app $SCRIPT_EN_B ${BASEDIR}/output/en/alarm-en-64.pkg ${BASEDIR}/output/en/alarm-en-64-signed.pkg

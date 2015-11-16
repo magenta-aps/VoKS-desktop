@@ -14,12 +14,16 @@
 4. "build-sign.sh" script should be modified to have apropriate certificate identity strings,
    for signing the application and installer (.pkg)
 
+5. First the windows builder should be executed. Output directory will contain the output.zip that is required in order to build and sign the pkg installers for osx.
+
 
 =================================================================================================================
 	HOW TO USE
 =================================================================================================================
 
-1. Execute build-sign.sh on osx device;
+1. Move the output.zip to the directory where "build-sign.sh" is present.
 
-2. After the script finishes executing the "output" folder will contain
+2. Execute build-sign.sh on osx device;
+
+3. After the script finishes executing the "output" folder will contain
    signed installers
