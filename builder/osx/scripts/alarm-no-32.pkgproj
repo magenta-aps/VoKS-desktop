@@ -190,7 +190,7 @@
 											<key>PATH_TYPE</key>
 											<integer>1</integer>
 											<key>PERMISSIONS</key>
-											<integer>511</integer>
+											<integer>420</integer>
 											<key>TYPE</key>
 											<integer>3</integer>
 											<key>UID</key>
@@ -206,7 +206,7 @@
 											<key>PATH_TYPE</key>
 											<integer>1</integer>
 											<key>PERMISSIONS</key>
-											<integer>511</integer>
+											<integer>420</integer>
 											<key>TYPE</key>
 											<integer>3</integer>
 											<key>UID</key>
@@ -534,6 +534,18 @@
 				<integer>0</integer>
 				<key>VERSION</key>
 				<integer>3</integer>
+			</dict>
+			<key>PACKAGE_SCRIPTS</key>
+			<dict>
+				<key>POSTINSTALL_PATH</key>
+				<dict>
+					<key>PATH</key>
+					<string>../pkgscripts/postinstall.sh</string>
+					<key>PATH_TYPE</key>
+					<integer>1</integer>
+				</dict>
+				<key>RESOURCES</key>
+				<array/>
 			</dict>
 			<key>PACKAGE_SETTINGS</key>
 			<dict>

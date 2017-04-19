@@ -6,10 +6,10 @@ config = {
     shelterId: shelterId,
     id: id,
     reconnectionDelay: 5000,
-    domain: 'alarm-uat.baltic-amadeus.lt',
+    domain: '[your domain here]',
     stun: 'stun:stun.l.google.com:19302',
     checkConnectionDelay: 4000,
-    lang: 'no',
+    lang: 'en',
 	numberOfErrorsToReport: 10,
     rtcStateCheckDelay: 200
 };

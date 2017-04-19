@@ -17,7 +17,7 @@ MediaStreamTrack.getSources(function (sources) {
         }
     }
 
-    WebRTC.getUserMedia({audio: hasVideo, video: hasAudio}, function(event){
+    navigator.getUserMedia({audio: hasVideo, video: hasAudio}, function(event){
         Storage.set('permissionsGranted', true);
     }, function(error) {
         Storage.set('permissionsGranted', false);

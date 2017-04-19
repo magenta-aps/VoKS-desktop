@@ -132,6 +132,7 @@ var WebsocketConnection = function () {
                         break;
                     case 'SHELTER_RESET':
                         if (json.data === 1) {
+                            app.closeNotifications();
                             UIHelper.reset(false);
                         }
                         break;
@@ -170,22 +171,17 @@ var WebsocketConnection = function () {
                         if((now - json.payload.timestamp) < THIRTY_MINUTES){
                             UIHelper.addMessage('notification', json.payload.body, json.payload.timestamp, true, json.payload.id);
                             UIHelper.scrollToBottom();
-                            var options = {
-                                body: json.payload.body + "\n" + Storage.get('translations')['if_gotit']
-                            };
 
                             if(!app.visible || !Alarm.TRIGGERED_ALARM){
-                                nwNotify.notify({
-                                    title: json.payload.title,
-                                    text: json.payload.body + "<br /> <br />" + Storage.get('translations')['if_gotit'],
-                                    onClickFunc: function(event) {
-                                        Alarm.onNotificationClick(json.payload.id);
-                                        event.closeNotification();
-                                    },
-                                    onCloseFunc: function(event) {
-                                        Alarm.onNotificationClick(json.payload.id);
-                                    }
-                                });
+                            chrome.notifications.create(json.payload.id.toString(),
+                            {
+                                type: "basic",
+                                title: json.payload.title,
+                                message: json.payload.body,
+                                contextMessage : Storage.get('translations')['if_gotit'],
+                                iconUrl: 'front/images/icon-32.png',
+                                requireInteraction: true
+                            });
                             }
                         }
                         break;

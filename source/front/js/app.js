@@ -29,16 +29,7 @@ window.onerror = function (msg, url, line) {
 };
 
 
-var nwNotify = require('nw-notify');
-// Change config options
-nwNotify.setConfig({
-    appIcon: nwNotify.getAppPath() + 'front/images/icon-64.png',
-    height: 135,
-    displayTime: 30*60*1000, //30min
-    defaultStyleText: {
-        'word-break': 'break-all'
-    }
-});
+/*var nwNotify = null;*/
 
 var gui = require('nw.gui');
 // Ip is required to get mac address
@@ -58,20 +49,43 @@ var translations = null;
 var win = gui.Window.get();
 
 app = {
+    closeNotifications: function(){
+        chrome.notifications.getAll(function(notifications){
+            for(notification_id in notifications){
+                chrome.notifications.clear(notification_id);
+            }
+        });
+    },
+    initNotifications: function(){
+        chrome.notifications.onClicked.addListener(function(notificationId){
+            chrome.notifications.clear(notificationId);
+        });
+        chrome.notifications.onClosed.addListener(function(notificationId){
+            Alarm.onNotificationClick(notificationId);
+        });
+    },
+    restartApplication: function(){
+        //Restart node-webkit app
+        chrome.runtime.reload();
+    },
     onStartup: function () {
         var show = true;
         for (var i = 0; i < gui.App.argv.length; i++) {
             if (gui.App.argv[i] == '--show-window' && (process.platform == "win32" || process.platform == "win64")) {
+                show = true;
                 app.show();
+                win.focus();
 
             }
             if (gui.App.argv[i] == '--remain-hidden') {
                 show = false;
             }
         }
+        if(show && process.platform == 'darwin'){
+            app.show();
+            win.focus();
+        }
 
-        app.show();
-        win.focus();
     },
     visible: false,
     newMessages: 0,
@@ -187,7 +201,8 @@ menu.append(new gui.MenuItem({type: 'separator'}));
 menu.append(new gui.MenuItem({
     label: 'Quit Alarm',
     click: function () {
-        nwNotify.closeAll();
+        /*nwNotify.closeAll();*/
+        app.closeNotifications();
         Storage.clear(true);
         gui.App.quit();
     }
@@ -202,6 +217,7 @@ gui.App.on('open', function (cmdline) {
 gui.App.on('reopen', function (cmdline) {
     app.show();
 });
+app.initNotifications();
 
 lang = function (key) {
 

@@ -50,6 +50,7 @@ UIHelper = {
     showChat: function () {
         this.hideActivatedWindow();
         UI.elements.chat.box.show();
+        UI.elements.chat.input.focus();
     },
     sortMessages: function () {
         UI.elements.chat.feed.children("p").sort(function (a, b) {
@@ -164,9 +165,10 @@ UIHelper = {
         if(!noReload){
             tray.remove();
             tray = null;
-            window.location.reload(true);
+           // window.location.reload(true);
             Storage.clear(true);
             Storage.set('wasReset', true);
+            app.restartApplication();
         }
         else {
             Storage.clear();

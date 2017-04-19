@@ -17,6 +17,7 @@ var AlarmService = function () {
     this.micAvailable = true;
     this.camAvailable = true;
     this.cameraError=false;
+    this.pushNotificationIdList = [];
 
     this.connectedToAruba=false;
     this.deviceCheckInterval=null;
@@ -184,7 +185,8 @@ var AlarmService = function () {
         $.post(config['api_url'] + "got-it?device_id=" + Storage.get('id') + '&notification_id=' + notificationId);
     };
 
-    this.onNotificationClick = function(id){
+    this.onNotificationClick = function(notificationId){
+        var id = parseInt(notificationId);
         if(!Alarm.TRIGGERED_ALARM){
             $('[data-notificationid=' + id + ']').remove();
         }
@@ -196,14 +198,14 @@ var AlarmService = function () {
     };
 
     this.deviceCheck = function(callback){
-        MediaStreamTrack.getSources(function (sources){
+        navigator.mediaDevices.enumerateDevices().then(function(sources){
             var hasAudio = false;
             var hasVideo = false;
             for (var i = 0; i < sources.length; i++) {
-                if (sources[i].kind === 'audio') {
+                if (sources[i].kind === 'audioinput') {
                     hasAudio = true;
                 }
-                else if (sources[i].kind === 'video') {
+                else if (sources[i].kind === 'videoinput') {
                     hasVideo = true;
                 }
             }
@@ -222,8 +224,7 @@ var AlarmService = function () {
             Storage.set("hasAudio", hasAudio);
             if (hasAudio || hasVideo) {
                 clearTimeout(self.rtctimeout);
-                WebRTC.getUserMedia({audio: hasAudio, video: hasVideo}, function (event) {
-              //  WebRTC.getUserMedia({audio: true, video: true}, function (event) {
+                navigator.getUserMedia({audio: hasAudio, video: hasVideo}, function (event) {
 
                     RTCConnection.setStream(event);
                     if (!Storage.get('noInternet') && Storage.get('PEER_CONNECTION')) {

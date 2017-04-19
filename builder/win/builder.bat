@@ -16,6 +16,7 @@ SET ZIP_EXE="C:\Program Files\7-Zip\7z.exe"
 
 echo ================== CLEANING DIRECTORY AND CREATING FOLDERS ==================
 cd %BUILDER_LOC%
+CALL npm install
 RD /Q /S output
 MKDIR output
 cd output
@@ -40,14 +41,14 @@ echo ================== BUILDING PCAPP AND REPLACING ICONS ==================
 COPY /Y %BUILDER_LOC%config\config-en.js %SOURCE_LOCATION%\front\js\config.js
 
 :: build the node application
-cd %BUILD_OUTPUT%\en
-CALL nwbuild -p win32,win64,osx64,osx32 %SOURCE_LOCATION% -v --v 0.12.3
+cd %BUILDER_LOC%
+CALL node buildApplication.js %BUILD_OUTPUT%\en
 
 :: This command will replace the icons for windows applications
-cd %BUILD_OUTPUT%\en\build\alarm\win64\
+cd %BUILD_OUTPUT%\en\alarm\win64\
 %RH_EXE% -addoverwrite "alarm.exe", "alarm.exe", "%BUILDER_LOC%img\app-icon.ico", ICONGROUP, IDR_MAINFRAME, 1033
 
-cd %BUILD_OUTPUT%\en\build\alarm\win32\
+cd %BUILD_OUTPUT%\en\alarm\win32\
 %RH_EXE% -addoverwrite "alarm.exe", "alarm.exe", "%BUILDER_LOC%img\app-icon.ico", ICONGROUP, IDR_MAINFRAME, 1033
 
 
@@ -57,21 +58,21 @@ cd %BUILD_OUTPUT%\en\build\alarm\win32\
 COPY /Y %BUILDER_LOC%config\config-no.js %SOURCE_LOCATION%\front\js\config.js
 
 :: build the node application
-cd %BUILD_OUTPUT%\no
-CALL nwbuild -p win32,win64,osx64,osx32 %SOURCE_LOCATION% -v --v 0.12.3
+cd %BUILDER_LOC%
+CALL node buildApplication.js %BUILD_OUTPUT%\no
 
 :: This command will replace the icons for windows applications
-cd %BUILD_OUTPUT%\no\build\alarm\win64\
+cd %BUILD_OUTPUT%\no\alarm\win64\
 %RH_EXE% -addoverwrite "alarm.exe", "alarm.exe", "%BUILDER_LOC%img\app-icon.ico", ICONGROUP, IDR_MAINFRAME, 1033
 
-cd %BUILD_OUTPUT%\no\build\alarm\win32\
+cd %BUILD_OUTPUT%\no\alarm\win32\
 %RH_EXE% -addoverwrite "alarm.exe", "alarm.exe", "%BUILDER_LOC%img\app-icon.ico", ICONGROUP, IDR_MAINFRAME, 1033
 
 
 :: =====================BUILDING WINDOWS INSTALLERS===================================
 
 echo ================== BUILDING INSTALLERS ==================
-cd %BUILDER_LOC%scripts
+cd %BUILDER_LOC%scripts\no_compression\
 
 CALL %INNO_EXE% /Qp "32setup_en.iss"
 CALL %INNO_EXE% /Qp "32setup_no.iss"
@@ -88,24 +89,22 @@ MKDIR en
 MKDIR no
 
 :: Remove windows builds
-cd %BUILD_OUTPUT%\en\build\alarm
+cd %BUILD_OUTPUT%\en\alarm
 RD /Q /S win32
 RD /Q /S win64
 
 :: Move folders to match the expected folder structure for osx build phase
 cd %BUILD_OUTPUT%\en
-MOVE /Y %BUILD_OUTPUT%\en\build\alarm %BUILD_OUTPUT%\output\en\alarm
-RD /Q /S build
+MOVE /Y %BUILD_OUTPUT%\en\alarm %BUILD_OUTPUT%\output\en\alarm
 
 :: Remove windows builds
-cd %BUILD_OUTPUT%\no\build\alarm
+cd %BUILD_OUTPUT%\no\alarm
 RD /Q /S win32
 RD /Q /S win64
 
 :: Move folders to match the expected folder structure for osx build phase
 cd %BUILD_OUTPUT%\no
-MOVE /Y %BUILD_OUTPUT%\no\build\alarm %BUILD_OUTPUT%\output\no\alarm
-RD /Q /S build
+MOVE /Y %BUILD_OUTPUT%\no\alarm %BUILD_OUTPUT%\output\no\alarm
 
 :: Zip output for osx, and remove the folder
 cd %BUILD_OUTPUT%

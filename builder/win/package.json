@@ -1,0 +1,7 @@
+{
+  "name": "alarm-builder",
+  "version": "0.0.1",
+  "dependencies": {
+    "nw-builder": "*"
+  }
+}

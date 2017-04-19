@@ -43,7 +43,7 @@ var Connection = function () {
     };
 
     this.createConnection = function (id) {
-        var connection = new WebRTC.RTCPeerConnection({'iceServers': [{'url': config['stun']}]}, connection);
+        var connection = new RTCPeerConnection({'iceServers': [{'url': config['stun']}]}, connection);
 
         //add local stream
         var noDevices = Storage.get('noDevices');
@@ -112,7 +112,7 @@ var Connection = function () {
 
     self.processOffer = function (id, offer) {
         var connection = self.getConnection(id);
-        connection.setRemoteDescription(new WebRTC.RTCSessionDescription(offer), function () {
+        connection.setRemoteDescription(new RTCSessionDescription(offer), function () {
 
         }, error);
 
@@ -135,13 +135,13 @@ var Connection = function () {
 
     self.processAnswer = function (id, answer) {
         var connection = self.getConnection(id);
-        connection.setRemoteDescription(new WebRTC.RTCSessionDescription(answer), function () {
+        connection.setRemoteDescription(new RTCSessionDescription(answer), function () {
         }, error);
     };
 
     self.processIce = function (id, ice) {
         var connection = self.getConnection(id);
-        connection.addIceCandidate(new WebRTC.RTCIceCandidate(ice), function () {
+        connection.addIceCandidate(new RTCIceCandidate(ice), function () {
         }, error);
     };
 

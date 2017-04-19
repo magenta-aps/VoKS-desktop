@@ -8,6 +8,7 @@
 $(document).ready(function () {
 
     if(Storage.get('wasReset')){
+        app.initNotifications();
         Storage.set('wasReset', false);
         app.hide();
     }
