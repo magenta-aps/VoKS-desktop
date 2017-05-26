@@ -4,7 +4,7 @@
  * Licensed under MPL 2.0, https://www.mozilla.org/MPL/2.0/
  * Developed in co-op with Baltic Amadeus, http://baltic-amadeus.lt
  */
-
+const isReachable = require('is-reachable');
 var AlarmService = function () {
     var self = this;
 
@@ -89,82 +89,79 @@ var AlarmService = function () {
      * and opens webSocket connection
      */
     this.initAndConnectionCheck=function(){
-        UIHelper.hostReachable().done(function() {
-            if(Storage.get('noInternet')){
-                WebSockets.connection.onclose=function(){};
-                WebSockets.connection.close();
-                delete WebSockets.connection;
-            }
-            Storage.set('noInternet', false);
-            // only execute if VOKS was not reachable before
-            if(!self.connectedToAruba){
-                self.connectedToAruba=true;
-                if(Storage.get('wsConnected')){
-                    UIHelper.hideArubaNotice();
-                    UIHelper.showConfirmation();
-                    Storage.set('arubaNoticeHidden', true);
+        isReachable(config['connectionCheckUrl']).then(reachable => {
+            if (reachable) {
+                if(Storage.get('noInternet')){
+                    WebSockets.connection.onclose=function(){};
+                    WebSockets.connection.close();
+                    delete WebSockets.connection;
                 }
-                else {
-                    Storage.set('arubaNoticeHidden', false);
-                }
-
-                $.get(config['api_url'] + "register-device", {
-                    device_id: config['id'],
-                    device_type: 'desktop',
-                    gcm_id: config['id'],
-                    mac_address: config['mac'],
-                    lang: config['lang']
-                })
-                    .done(function (settings) {
-                    if(settings.success == false){
-                        UIHelper.showOtherMessage(settings.message);
-                        UIHelper.showArubaNotice();
-                        UIHelper.hideConfirmation();
-                        self.connectedToAruba = false;
-                        setTimeout(self.initAndConnectionCheck, config['checkConnectionDelay']);
-                        return false;
-                    } else {
-                        // Check how many times the device was registered
-                        // (Used for detecting if the application was reset from shelter or closed by user [Quit app])
-                        var count = Storage.get('registerCount') + 1;
-                        Storage.set('registerCount', count);
-
-                        // Set the configurations retrieved from the shelter
-                        config['api_url'] = settings['api_url'];
-                        config['ws_url'] = settings['ws_url'];
-                        config['shelterId'] = settings['shelter_id'];
-                        config['dev_mode'] = settings['dev_mode'];
-                        WebSockets.init();
+                Storage.set('noInternet', false);
+                // only execute if VOKS was not reachable before
+                if(!self.connectedToAruba){
+                    self.connectedToAruba=true;
+                    if(Storage.get('wsConnected')){
+                        UIHelper.hideArubaNotice();
+                        UIHelper.showConfirmation();
+                        Storage.set('arubaNoticeHidden', true);
                     }
-                })
-                    .fail(function(){
-                        self.connectedToAruba = false;
-                        UIHelper.showOtherMessage(lang('crisis_team_disconnected'));
-                    });
-            }
-            // Keep checking
-            setTimeout(self.initAndConnectionCheck, config['checkConnectionDelay']);
+                    else {
+                        Storage.set('arubaNoticeHidden', false);
+                    }
 
-        }).fail(function(jqXHR, textStatus, errorThrown) {
-            // Catch error when WebSockets is not yet loaded, and ignore
-            try{
-                WebSockets.onDisconnected();
-            }
-            catch(e){
+                    $.get(config['api_url'] + "register-device", {
+                        device_id: config['id'],
+                        device_type: 'desktop',
+                        gcm_id: config['id'],
+                        mac_address: config['mac'],
+                        lang: config['lang']
+                    })
+                        .done(function (settings) {
+                            if(settings.success == false){
+                                UIHelper.showOtherMessage(settings.message);
+                                UIHelper.showArubaNotice();
+                                UIHelper.hideConfirmation();
+                                self.connectedToAruba = false;
+                                setTimeout(self.initAndConnectionCheck, config['checkConnectionDelay']);
+                                return false;
+                            } else {
+                                // Check how many times the device was registered
+                                // (Used for detecting if the application was reset from shelter or closed by user [Quit app])
+                                var count = Storage.get('registerCount') + 1;
+                                Storage.set('registerCount', count);
 
-            }
-            UIHelper.updateTranslations();
+                                // Set the configurations retrieved from the shelter
+                                config['api_url'] = settings['api_url'];
+                                config['ws_url'] = settings['ws_url'];
+                                config['shelterId'] = settings['shelter_id'];
+                                config['dev_mode'] = settings['dev_mode'];
+                                WebSockets.init();
+                            }
+                        })
+                        .fail(function(){
+                            self.connectedToAruba = false;
+                            UIHelper.showOtherMessage(lang('crisis_team_disconnected'));
+                            // Keep checking
+                            setTimeout(self.initAndConnectionCheck, config['checkConnectionDelay']);
+                        });
+                }
+            } else {
+                try {
+                    WebSockets.onDisconnected();
+                } catch(e) {
 
-            // execute only if VOKS was reachable before
-            if(self.connectedToAruba){
-                self.connectedToAruba=false;
-                Storage.set('connected', false);
-                UIHelper.showArubaNotice();
-                UIHelper.hideConfirmation();
-            }
-            // Keep checking
-            setTimeout(self.initAndConnectionCheck, config['checkConnectionDelay'])
+                }
+                UIHelper.updateTranslations();
 
+                // execute only if VOKS was reachable before
+                if(self.connectedToAruba){
+                    self.connectedToAruba=false;
+                    Storage.set('connected', false);
+                    UIHelper.showArubaNotice();
+                    UIHelper.hideConfirmation();
+                }
+                // Keep checking
+                setTimeout(self.initAndConnectionCheck, config['checkConnectionDelay'])}
         });
     };
 

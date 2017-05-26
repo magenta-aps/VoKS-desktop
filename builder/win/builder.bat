@@ -31,6 +31,7 @@ MKDIR %BUILD_OUTPUT%\no
 cd %BUILDER_LOC%
 cd ../../source
 SET SOURCE_LOCATION=%cd%
+CALL npm install
 
 
 echo ================== BUILDING PCAPP AND REPLACING ICONS ==================

@@ -171,7 +171,7 @@ var Connection = function () {
             if (typeof self.connections[id] !== 'undefined'
                 && typeof self.connections[id].connection !== 'undefined'
                 && self.connections[id].connection.signalingState !== 'closed') {
-                Storage.set('connected', true)
+                Storage.set('connected', true);
                 return true;
             }
         }catch(e) {

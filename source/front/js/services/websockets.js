@@ -257,4 +257,4 @@ var WebsocketConnection = function () {
     };
 };
 
-WebSockets = new WebsocketConnection();
+var WebSockets = new WebsocketConnection();

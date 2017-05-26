@@ -16,7 +16,7 @@ AppUpdatesURL=http://www.bcomesafe.com/
 DefaultDirName={pf}\BComeSafe Alarm
 DefaultGroupName=Alarm
 AllowNoIcons=yes
-OutputDir=..\output\en\
+OutputDir=..\output\no
 OutputBaseFilename=alarm-setup-win32
 Compression=lzma
 SolidCompression=yes
@@ -31,13 +31,13 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "..\output\en\build\alarm\win32\alarm.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\en\build\alarm\win32\ffmpegsumo.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\en\build\alarm\win32\icudtl.dat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\en\build\alarm\win32\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\en\build\alarm\win32\libGLESv2.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\en\build\alarm\win32\nw.pak"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\en\build\alarm\win32\locales\*"; DestDir: "{app}\locales\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\output\no\build\alarm\win32\alarm.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\no\build\alarm\win32\ffmpegsumo.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\no\build\alarm\win32\icudtl.dat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\no\build\alarm\win32\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\no\build\alarm\win32\libGLESv2.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\no\build\alarm\win32\nw.pak"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\no\build\alarm\win32\locales\*"; DestDir: "{app}\locales\"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

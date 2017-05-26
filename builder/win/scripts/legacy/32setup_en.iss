@@ -16,8 +16,8 @@ AppUpdatesURL=http://www.bcomesafe.com/
 DefaultDirName={pf}\BComeSafe Alarm
 DefaultGroupName=Alarm
 AllowNoIcons=yes
-OutputDir=..\output\en
-OutputBaseFilename=alarm-setup-win64
+OutputDir=..\output\en\
+OutputBaseFilename=alarm-setup-win32
 Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=admin
@@ -31,20 +31,20 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "..\output\en\build\alarm\win64\alarm.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\en\build\alarm\win64\ffmpegsumo.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\en\build\alarm\win64\icudtl.dat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\en\build\alarm\win64\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\en\build\alarm\win64\libGLESv2.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\en\build\alarm\win64\nw.pak"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\en\build\alarm\win64\locales\*"; DestDir: "{app}\locales\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\output\en\build\alarm\win32\alarm.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\build\alarm\win32\ffmpegsumo.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\build\alarm\win32\icudtl.dat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\build\alarm\win32\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\build\alarm\win32\libGLESv2.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\build\alarm\win32\nw.pak"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\build\alarm\win32\locales\*"; DestDir: "{app}\locales\"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
 Name: "{commonstartup}\Alarm"; Filename: "{app}\alarm.exe"
 Name: "{group}\Alarm"; Filename: "{app}\alarm.exe"; Parameters: "--show-window"
 Name: "{group}\{cm:UninstallProgram,Alarm}"; Filename: "{uninstallexe}"
-Name: "{commondesktop}\Alarm"; Filename: "{app}\alarm.exe"; Tasks: desktopicon
+Name: "{commondesktop}\Alarm"; Filename: "{app}\alarm.exe"; Tasks: desktopicon; Parameters: "--show-window"
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\Alarm"; Filename: "{app}\alarm.exe"; Tasks: quicklaunchicon; Parameters: "--show-window"
 
 [Run]

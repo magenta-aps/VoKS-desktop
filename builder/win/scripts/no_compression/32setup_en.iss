@@ -16,8 +16,8 @@ AppUpdatesURL=http://www.bcomesafe.com/
 DefaultDirName={pf}\BComeSafe Alarm
 DefaultGroupName=Alarm
 AllowNoIcons=yes
-OutputDir=..\output\no
-OutputBaseFilename=alarm-setup-win64
+OutputDir=..\..\output\en\
+OutputBaseFilename=alarm-setup-win32
 Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=admin
@@ -31,20 +31,34 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "..\output\no\build\alarm\win64\alarm.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\no\build\alarm\win64\ffmpegsumo.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\no\build\alarm\win64\icudtl.dat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\no\build\alarm\win64\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\no\build\alarm\win64\libGLESv2.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\no\build\alarm\win64\nw.pak"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\output\no\build\alarm\win64\locales\*"; DestDir: "{app}\locales\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\output\en\alarm\win32\front\*"; DestDir: "{app}\front\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\output\en\alarm\win32\locales\*"; DestDir: "{app}\locales\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\output\en\alarm\win32\node_modules\*"; DestDir: "{app}\node_modules\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\output\en\alarm\win32\alarm.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\d3dcompiler_47.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\ffmpeg.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\icudtl.dat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\index.html"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\libGLESv2.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\natives_blob.bin"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\node.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\nw.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\nw_100_percent.pak"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\nw_200_percent.pak"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\nw_elf.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\package.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\resources.pak"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\output\en\alarm\win32\snapshot_blob.bin"; DestDir: "{app}"; Flags: ignoreversion
+
+
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
 Name: "{commonstartup}\Alarm"; Filename: "{app}\alarm.exe"
 Name: "{group}\Alarm"; Filename: "{app}\alarm.exe"; Parameters: "--show-window"
 Name: "{group}\{cm:UninstallProgram,Alarm}"; Filename: "{uninstallexe}"
-Name: "{commondesktop}\Alarm"; Filename: "{app}\alarm.exe"; Tasks: desktopicon
+Name: "{commondesktop}\Alarm"; Filename: "{app}\alarm.exe"; Tasks: desktopicon; Parameters: "--show-window"
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\Alarm"; Filename: "{app}\alarm.exe"; Tasks: quicklaunchicon; Parameters: "--show-window"
 
 [Run]
