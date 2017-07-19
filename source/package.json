@@ -15,7 +15,8 @@
     "chromium-args": "--allow-running-insecure-content --ignore-certificate-errors --user-data-dir"
   },
   "dependencies": {
-    "ip": "*"
+    "ip": "*",
+	"is-reachable": "^2.3.3"
   },
   "chromium-args": "--allow-running-insecure-content --ignore-certificate-errors --user-data-dir"
 }
